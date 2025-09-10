@@ -24,3 +24,17 @@ def get_weather_service(
     repository: WeatherRequestRepository = Depends(get_weather_repository)
 ):
     return WeatherService(weather_api, repository)
+
+# Обработка основного варианта использования - запроса с целью получения температуры
+@router.post("/weather", response_model=WeatherResponse)
+async def get_weather(
+    request: WeatherRequestBase,
+    weather_service: WeatherService = Depends(get_weather_service)
+):
+    if request.lat is not None and request.lon is not None:
+        return weather_service.get_weather_by_coords(request.lat, request.lon)
+    else:
+        raise HTTPException(
+            status_code=400, 
+            detail="Both latitude and longitude must be provided"
+        )
