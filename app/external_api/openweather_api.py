@@ -1,5 +1,5 @@
 import requests
-from app.core import settings
+from app.core.settings import settings
 
 # Класс обработки запросов к Weather API
 class OpenWeatherAPI:
