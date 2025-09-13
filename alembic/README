@@ -1,1 +1,4 @@
 Generic single-database configuration.
+Basic usage:
+run 'alembic revision --autogenerate -m "name"' for creaing migration
+run 'alembic upgrade head' for updating db
