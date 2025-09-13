@@ -7,10 +7,6 @@ class WeatherRequestBase(BaseModel):
     lon: Optional[float] = None
 
 class WeatherResponse(BaseModel):
-    id: int
-    latitude: Optional[float]
-    longitude: Optional[float]
-    request_time: datetime
     temperature: float
     
     class Config:
