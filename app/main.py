@@ -2,9 +2,11 @@ from fastapi import FastAPI
 from app.db.models import Base
 from app.db.session import engine
 from app.api import weather_api
+import os
 
 # Создание таблицы
-Base.metadata.create_all(bind=engine)
+if os.getenv("environment") == "development":
+    Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Weather API", version="1.0.0")
 
