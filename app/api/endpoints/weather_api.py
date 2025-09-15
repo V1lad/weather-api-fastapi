@@ -34,14 +34,8 @@ async def get_weather(
     # Получаем данные от модуля работы с внешним API
     weather_data = openweatherapi_handler.get_weather_by_coords(request.lat, request.lon)
     
-    # Создание записи в БД
-    db_weather_request = WeatherRequest(
-        latitude=request.lat,
-        longitude=request.lon,
-        temperature=weather_data["main"]["temp"]
-    )
-    
-    return db.create(db_weather_request)
+    # Создание записи в БД, отправка результата
+    return db.create_weather_request(lat=request.lat, lon=request.lon, temp=weather_data["main"]["temp"])
 
 
 
