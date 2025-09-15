@@ -67,7 +67,7 @@ pytest
 **POST /api/v1/weather** - Получение температуры по ширине и долготе.
 
 ## Формат запроса 
-```json
+```text
 {
   "lat": -90 < FLOAT < 90,
   "lon": -180 < FLOAT < 180>
@@ -76,7 +76,7 @@ pytest
 ## Формат ответа
 
 Status Code: 200 OK
-```json
+```text
 {
   "temperature": FLOAT
 }
