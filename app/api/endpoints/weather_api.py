@@ -30,11 +30,13 @@ async def get_weather(
     request: WeatherRequestBase,
     weather_service: WeatherService = Depends(get_weather_service)
 ):
-    if request.lat is not None and request.lon is not None and (request.lon <= 180 and
+    if not (request.lat is not None and request.lon is not None and request.lon <= 180 and
         request.lon >= -180 and request.lat <= 90 and request.lat >= 90):
-        return weather_service.get_weather_by_coords(request.lat, request.lon)
-    else:
         raise HTTPException(
             status_code=400, 
             detail="Incorrect data is provided"
         )
+        
+    return weather_service.get_weather_by_coords(request.lat, request.lon)
+
+
