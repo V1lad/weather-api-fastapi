@@ -25,6 +25,7 @@ def get_weather_service(
     return WeatherService(weather_api, repository)
 
 # Обработка основного варианта использования - запроса с целью получения температуры
+# С записью данных о запросе в базу данных
 @router.post("/weather", response_model=WeatherResponse)
 async def get_weather(
     request: WeatherRequestBase,
