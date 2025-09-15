@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
-from typing import Optional, List
 from app.db.models import WeatherRequest
 
+# Репозиторий для работы с базой данных
 class WeatherRequestRepository:
     def __init__(self, db: Session):
         self.db = db

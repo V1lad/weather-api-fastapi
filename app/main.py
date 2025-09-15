@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.db.models import Base
 from app.db.session import engine
-from app.api import weather_api
+from app.api.endpoints import weather_api
 import os
 
 # Создание таблицы

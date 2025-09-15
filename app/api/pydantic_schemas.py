@@ -1,11 +1,11 @@
 from pydantic import BaseModel
-from typing import Optional
-from datetime import datetime
 
+# Для валидации запросов с целью получения температуры
 class WeatherRequestBase(BaseModel):
-    lat: Optional[float] = None
-    lon: Optional[float] = None
+    lat: float
+    lon: float
 
+# Для валидации ответа сервера с температурой
 class WeatherResponse(BaseModel):
     temperature: float
     
