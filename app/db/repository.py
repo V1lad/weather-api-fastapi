@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from typing import Optional, List
 from app.db.models import WeatherRequest
 
 class WeatherRequestRepository:
