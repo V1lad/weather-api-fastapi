@@ -1,4 +1,4 @@
-from app.external_api.openweather_api import OpenWeatherAPI
+from app.core.openweatherapi_handler import OpenWeatherAPI
 from app.db.models import WeatherRequest
 from app.db.repository import WeatherRequestRepository
 
