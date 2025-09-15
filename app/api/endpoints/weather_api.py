@@ -17,13 +17,6 @@ def get_weather_api_connector():
 def get_weather_repository(db: Session = Depends(get_db)):
     return WeatherRequestRepository(db)
 
-# Возвращает экземпляр модуля бизнес-логики
-def get_weather_service(
-    weather_api: OpenWeatherAPI = Depends(get_weather_api_connector),
-    repository: WeatherRequestRepository = Depends(get_weather_repository)
-):
-    return WeatherService(weather_api, repository)
-
 # Обработка основного варианта использования - запроса с целью получения температуры
 # С записью данных о запросе в базу данных
 @router.post("/weather", response_model=WeatherResponse)
@@ -38,8 +31,6 @@ async def get_weather(
             status_code=400, 
             detail="Incorrect data is provided"
         )
-        
-    return weather_service.get_weather_by_coords(request.lat, request.lon)
     
     # Получаем данные от модуля работы с внешним API
     weather_data = openweatherapi_handler.get_weather_by_coords(request.lat, request.lon)
