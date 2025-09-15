@@ -25,8 +25,7 @@ async def get_weather(
     openweatherapi_handler: OpenWeatherAPI = Depends(get_weather_api_connector),
     db: WeatherRequestRepository = Depends(get_weather_repository)
 ):
-    if not (request.lat is not None and request.lon is not None and request.lon <= 180 and
-        request.lon >= -180 and request.lat <= 90 and request.lat >= -90):
+    if not (request.lon <= 180 and request.lon >= -180 and request.lat <= 90 and request.lat >= -90):
         raise HTTPException(
             status_code=400, 
             detail="Incorrect data is provided"
