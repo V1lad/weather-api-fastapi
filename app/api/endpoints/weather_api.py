@@ -31,7 +31,7 @@ async def get_weather(
     weather_service: WeatherService = Depends(get_weather_service)
 ):
     if not (request.lat is not None and request.lon is not None and request.lon <= 180 and
-        request.lon >= -180 and request.lat <= 90 and request.lat >= 90):
+        request.lon >= -180 and request.lat <= 90 and request.lat >= -90):
         raise HTTPException(
             status_code=400, 
             detail="Incorrect data is provided"
