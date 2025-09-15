@@ -36,5 +36,5 @@ async def get_weather(
     else:
         raise HTTPException(
             status_code=400, 
-            detail="Both latitude and longitude must be provided"
+            detail="Incorrect data is provided"
         )
