@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from typing import Optional
 
 from app.db.session import get_db
 from app.db.repository import WeatherRequestRepository
-from app.external_api.openweather_api import OpenWeatherAPI
+from app.core.openweatherapi_handler import OpenWeatherAPI
 from app.core.weather_service import WeatherService
 from app.api.pydantic_schemas import WeatherRequestBase, WeatherResponse
 
